@@ -17,6 +17,16 @@ You can read more [about it here](https://bombaydaak.substack.com).
 
 ## Books & Essays
 
+### 2026
+
+##### Books
+
+1. Mansur - Vikramajit Ram
+2. Despite the State - M. Rajshekhar
+ 
+##### Essays
+
+
 ### 2025
 
 ##### Books
