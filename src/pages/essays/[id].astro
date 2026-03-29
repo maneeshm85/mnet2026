@@ -1,0 +1,139 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={`${post.data.title} — Maneesh Madambath`}>
+  <article>
+    <header>
+      <h1>{post.data.title}</h1>
+      <div class="meta">
+        <time>{post.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        {post.data.tags && (
+          <span class="tags">
+            {post.data.tags.map(tag => <span class="tag">{tag}</span>)}
+          </span>
+        )}
+      </div>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    <footer>
+      <a href="/essays">← All essays</a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  article {
+    max-width: var(--max-w);
+  }
+
+  header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h1 {
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  time {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  .prose {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .prose h2, .prose h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose h2 { font-size: 1.3rem; }
+  .prose h3 { font-size: 1.1rem; }
+
+  .prose a {
+    color: var(--fg);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose blockquote {
+    border-left: 3px solid var(--border);
+    padding-left: 1.25rem;
+    color: var(--fg-muted);
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+
+  .prose code {
+    font-size: 0.85em;
+    background: var(--border);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+
+  .prose img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+  }
+
+  article footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+  }
+
+  article footer a {
+    color: var(--fg-muted);
+    text-decoration: none;
+  }
+
+  article footer a:hover { color: var(--fg); }
+</style>

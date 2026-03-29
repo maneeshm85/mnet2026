@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const photos = await getCollection('photos');
+  return photos.map(set => ({
+    params: { id: set.id },
+    props: { set },
+  }));
+}
+
+const { set } = Astro.props;
+
+// Get all images for this set from public folder
+const allImagePaths = import.meta.glob('/public/photos-content/**/*.{jpg,jpeg,webp,png}', { eager: true });
+const setImages = Object.keys(allImagePaths)
+  .filter(path => path.includes(`/photos-content/${set.id}/`))
+  .map(path => path.replace('/public', ''))
+  .sort();
+---
+
+<BaseLayout title={`${set.data.title} — Maneesh Madambath`}>
+  <article>
+    <header>
+      <h1>{set.data.title}</h1>
+      <div class="meta">
+        {set.data.display_date ? <time>{set.data.display_date}</time> : null}
+        {set.data.location ? <span class="location">{set.data.location}</span> : null}
+      </div>
+      {set.data.description ? <p class="description">{set.data.description}</p> : null}
+    </header>
+
+    <div class="photo-stack">
+      {setImages.map(src => (
+        <figure>
+          <img src={src} alt="" loading="lazy" />
+        </figure>
+      ))}
+    </div>
+
+    {set.data.footer ? <p class="footer-note">{set.data.footer}</p> : null}
+
+    <nav class="back">
+      <a href="/photos">← All photos</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  article {
+    max-width: var(--max-w-wide);
+  }
+
+  header {
+    max-width: var(--max-w);
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h1 {
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .meta {
+    display: flex;
+    gap: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .description {
+    color: var(--fg-muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .photo-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .footer-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    margin-top: 2rem;
+  }
+
+  .back {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+  }
+
+  .back a {
+    color: var(--fg-muted);
+    text-decoration: none;
+  }
+
+  .back a:hover { color: var(--fg); }
+</style>

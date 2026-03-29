@@ -1,0 +1,238 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Maneesh Madambath — writer, photographer" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="wordmark">Maneesh Madambath</a>
+        <div class="nav-links">
+          <a href="/essays">Essays</a>
+          <a href="/photos">Photos</a>
+          <a href="/reading">Reading</a>
+          <a href="/about">About</a>
+          <button id="theme-toggle" aria-label="Toggle dark mode">
+            <span class="icon-light">☀︎</span>
+            <span class="icon-dark">☽</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <p>© {new Date().getFullYear()} Maneesh Madambath</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  /* ── Tokens ── */
+  :root {
+    --bg: #faf9f7;
+    --fg: #1a1a1a;
+    --fg-muted: #666;
+    --border: #e0ddd8;
+    --accent: #2a2a2a;
+    --link: #1a1a1a;
+    --link-hover: #555;
+    --max-w: 680px;
+    --max-w-wide: 1100px;
+  }
+
+  [data-theme="dark"] {
+    --bg: #111;
+    --fg: #e8e6e1;
+    --fg-muted: #888;
+    --border: #2a2a2a;
+    --accent: #e8e6e1;
+    --link: #e8e6e1;
+    --link-hover: #aaa;
+  }
+
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 18px; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    transition: background 0.2s, color 0.2s;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Nav ── */
+  header {
+    max-width: var(--max-w-wide);
+    margin: 0 auto;
+    padding: 2rem 0 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .wordmark {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--fg);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--fg-muted);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { color: var(--fg); }
+
+  /* ── Theme toggle ── */
+  #theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--fg-muted);
+    font-size: 1rem;
+    padding: 0;
+    line-height: 1;
+  }
+
+  #theme-toggle:hover { color: var(--fg); }
+
+  [data-theme="light"] .icon-dark { display: none; }
+  [data-theme="dark"] .icon-light { display: none; }
+
+  /* ── Main ── */
+  main {
+    max-width: var(--max-w-wide);
+    margin: 0 auto;
+  }
+
+  /* ── Footer ── */
+  footer {
+    max-width: var(--max-w-wide);
+    margin: 4rem auto 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+  }
+
+  /* ── Typography ── */
+  h1, h2, h3 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--fg);
+  }
+
+  a { color: var(--link); }
+  a:hover { color: var(--link-hover); }
+
+  p { margin-bottom: 1.25rem; }
+
+  /* ── Prose ── */
+.prose h2 {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h3 {
+  font-size: 1.15rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.prose ul li::marker {
+  color: var(--fg-muted);
+}
+
+.prose a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1.25rem;
+  color: var(--fg-muted);
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  display: block;
+}
+</style>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  // Restore saved preference
+  const saved = localStorage.getItem('theme');
+  if (saved) html.setAttribute('data-theme', saved);
+
+  toggle?.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+</script>

@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+const sorted = posts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5);
+---
+
+<section class="home-section">
+  <h2>Essays</h2>
+  <ul>
+    {sorted.map(post => (
+      <li>
+        <a href={`/essays/${post.slug}`}>{post.data.title}</a>
+        <time>{post.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'short' })}</time>
+      </li>
+    ))}
+  </ul>
+  <a href="/essays" class="see-all">All essays →</a>
+</section>
+
+<style>
+  .home-section {
+    max-width: var(--max-w);
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h2 {
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+  li a {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--fg);
+  }
+
+  li a:hover {
+    color: var(--fg-muted);
+  }
+
+  time {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .see-all {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    text-decoration: none;
+  }
+
+  .see-all:hover {
+    color: var(--fg);
+  }
+</style>
