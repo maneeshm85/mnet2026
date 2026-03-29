@@ -13,10 +13,10 @@ const sorted = photos.sort((a, b) => {
   <h2>Photos</h2>
   <div class="photo-grid">
     {sorted.map(set => (
-      <a href={`/photos/${set.slug}`} class="photo-card">
+      <a href={`/photos/${set.id}`} class="photo-card">
         <div class="photo-thumb">
           {set.data.banner
-            ? <img src={`/content/photos/${set.slug}/${set.data.banner}`} alt={set.data.title} />
+            ? <img src={`/photos-content/${set.id}/${set.data.banner}`} alt={set.data.title} />
             : <div class="no-image" />
           }
         </div>
