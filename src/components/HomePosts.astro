@@ -13,7 +13,7 @@ const sorted = posts
   <ul>
     {sorted.map(post => (
       <li>
-        <a href={`/essays/${post.slug}`}>{post.data.title}</a>
+        <a href={`/essays/${post.id}`}>{post.data.title}</a>
         <time>{post.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'short' })}</time>
       </li>
     ))}
