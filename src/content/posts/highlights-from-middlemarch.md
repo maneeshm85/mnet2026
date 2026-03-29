@@ -1,7 +1,7 @@
 ---
 title:  Highlights from Middlemarch
 date: 2024-06-22
-tags: ["Books", "Quotes", "Classics"]
+tags: ["books", "quotes", "classics"]
 ---
 
 I spent a fairly brutal summer reading George Eliot's Middlemarch. I didn't take any notes while reading it, instead I found myself making highlights practically every other page. These are some of my favourites that I share without any context. Just a trousseau of gilded sentences that are, strangely, now mine. 

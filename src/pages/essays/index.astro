@@ -3,7 +3,9 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const posts = await getCollection('posts');
-const sorted = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sorted = posts
+  .filter(post => !post.data.unlisted)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout title="Essays — Maneesh Madambath">

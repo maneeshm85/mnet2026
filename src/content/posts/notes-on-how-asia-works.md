@@ -1,7 +1,7 @@
 ---
 title:  How Asia Works - Joe Studwell
 date: 2023-01-22
-tags: ["Books", "Economics", "Progress"]
+tags: ["books", "economics", "progress"]
 ---
 
 # Note on How Asia Works

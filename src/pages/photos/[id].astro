@@ -12,7 +12,6 @@ export async function getStaticPaths() {
 
 const { set } = Astro.props;
 
-// Get all images for this set from public folder
 const allImagePaths = import.meta.glob('/public/photos-content/**/*.{jpg,jpeg,webp,png}', { eager: true });
 const setImages = Object.keys(allImagePaths)
   .filter(path => path.includes(`/photos-content/${set.id}/`))
@@ -28,6 +27,13 @@ const setImages = Object.keys(allImagePaths)
         {set.data.display_date ? <time>{set.data.display_date}</time> : null}
         {set.data.location ? <span class="location">{set.data.location}</span> : null}
       </div>
+      {set.data.tags && (
+        <span class="tags">
+        {set.data.tags.map(tag => (
+        <a href={`/tags/${tag}`} class="tag">{tag}</a>
+        ))}
+        </span>
+)}
       {set.data.description ? <p class="description">{set.data.description}</p> : null}
     </header>
 
@@ -80,15 +86,32 @@ const setImages = Object.keys(allImagePaths)
     margin: 0;
   }
 
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+
+  .tag:hover { color: var(--fg); }
+
   .photo-stack {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  figure {
-    margin: 0;
-  }
+  figure { margin: 0; }
 
   figure img {
     width: 100%;

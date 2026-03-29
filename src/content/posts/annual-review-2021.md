@@ -1,7 +1,7 @@
 ---
 title:  2021 - Annual Review
 date: 2022-01-07
-tags: ["annual-review", "life-updates"]
+tags: ["Annual Review", "Life Updates"]
 unlisted: true
 ---
 

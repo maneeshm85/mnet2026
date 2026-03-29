@@ -1,7 +1,7 @@
 ---
 title: Left Hand of Darkness - Ursula K. LeGuin
 date: 2022-08-02
-tags: ["Books", "Notes", "Perhaps-a-Review", "Science-Fiction"]
+tags: ["books", "notes", "perhaps-a-review", "science-fiction"]
 ---
 
 # On Reading the Left Hand of Darkness

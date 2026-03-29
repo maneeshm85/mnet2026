@@ -3,7 +3,7 @@ title: Independence Day Walk
 date: 2022-08-15
 location: Andheri, Mumbai
 display_date: Aug 2022
-tags: ["Mumbai", "Photos", "Street Photos"]
+tags: ["mumbai", "photos", "street-photos"]
 footer: Taken with Sony RX 100 M2
 banner: DSC03434.png
 

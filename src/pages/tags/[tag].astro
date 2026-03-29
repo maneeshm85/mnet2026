@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const photos = await getCollection('photos');
+
+  const allTags = [...new Set([
+    ...posts.flatMap(p => p.data.tags || []),
+    ...photos.flatMap(p => p.data.tags || []),
+  ])];
+
+  return allTags.map(tag => ({
+    params: { tag },
+    props: { tag, posts, photos },
+  }));
+}
+
+const { tag, posts, photos } = Astro.props;
+
+const matchedPosts = posts.filter(p =>
+  (p.data.tags || []).includes(tag) && !p.data.unlisted
+);
+
+const matchedPhotos = photos.filter(p =>
+  (p.data.tags || []).includes(tag)
+);
+---
+
+<BaseLayout title={`${tag} — Maneesh Madambath`}>
+  <div class="page-header">
+    <h1>{tag}</h1>
+  </div>
+
+  {matchedPosts.length > 0 && (
+    <section class="tag-section">
+      <h2>Essays</h2>
+      <ul class="post-list">
+        {matchedPosts.map(post => (
+          <li>
+            <a href={`/essays/${post.id}`}>{post.data.title}</a>
+            <time>{post.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'short' })}</time>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {matchedPhotos.length > 0 && (
+    <section class="tag-section">
+      <h2>Photos</h2>
+      <ul class="post-list">
+        {matchedPhotos.map(set => (
+          <li>
+            <a href={`/photos/${set.id}`}>{set.data.title}</a>
+            {set.data.display_date ? <time>{set.data.display_date}</time> : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .page-header {
+    max-width: var(--max-w);
+    margin-bottom: 2.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .tag-section {
+    max-width: var(--max-w);
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .post-list { list-style: none; }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  li:first-child { border-top: 1px solid var(--border); }
+
+  li a {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--fg);
+  }
+
+  li a:hover { color: var(--fg-muted); }
+
+  time {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+</style>

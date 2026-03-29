@@ -1,7 +1,7 @@
 ---
 title: Increase Typing Speed With Python
 date: 2021-09-11
-tags: ["Coding", "Productivity", "Speed", "Python"]
+tags: ["coding", "productivity", "speed", "python"]
 ---
 
 

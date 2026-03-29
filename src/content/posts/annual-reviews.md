@@ -1,7 +1,7 @@
 ---
 title:  Easy Annual Reviews
 date: 2022-02-10
-tags: ["Annual Review", "Examined Life"]
+tags: ["annual-review", "life-updates", "life"]
 ---
 
 Planning and reviewing ones year in a journal is a a great habit, it is like making a packing list for a long journey, and then checking things off. It gives you the confidence that you are prepared for what's ahead; it gives you a sense of direction in life. 

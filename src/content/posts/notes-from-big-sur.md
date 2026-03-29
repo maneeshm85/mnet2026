@@ -1,7 +1,7 @@
 ---
 title: Notes on Big Sur by Jack Kerouac
 date: 2022-08-18
-tags: ["Books", "Notes", "Perhaps-a-Review", "Fiction"]
+tags: ["books", "notes", "perhaps-a-review", "fiction"]
 ---
 
 Death is a constant in Kerouac's Big Sur, omnipresent, standing on our every turn. Religion is a constant. Drunkenness is a constant. Mother is a constant. The white line splitting the road is a constant. The road is a constant.

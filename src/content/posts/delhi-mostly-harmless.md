@@ -1,7 +1,7 @@
 ---
 title:  Delhi Mostly Harmless - Elizabeth Chatterjee
 date: 2021-08-14
-tags: ["Books", "Notes", "Perhaps-a-Review", "Delhi"]
+tags: ["books", "notes", "perhaps-a-review", "delhi"]
 ---
 
 

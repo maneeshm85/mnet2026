@@ -1,7 +1,7 @@
 ---
 title: Assessing an Approach to Getting Many Things Done
 date: 2020-08-21
-tags: ["GTD"]
+tags: ["gtd", "lifemaxxing"]
 ---
 How does one focus and finish more things?
 <!--more-->

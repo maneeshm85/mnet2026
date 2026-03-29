@@ -1,7 +1,8 @@
 ---
 title:  2022 - Annual Review
 date: 2022-12-28
-tags: ["Annual Review", "Life Updates"]
+tags: ["annual-review", "life-updates"]
+unlisted: true
 ---
 ## What do you have to show for your time?
 

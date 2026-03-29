@@ -1,7 +1,7 @@
 ---
 title:  Sea Versus Land
 date: 2025-12-21
-tags: ["Notes", "Essay", "Living"]
+tags: ["notes", "mini-essay", "life"]
 ---
 
 Some people see living as traversing a land, they need a map and follow milestones with a definite destination in mind, knowing where they must be at all times, whether they are ahead or behind, knowing where and when they halt and when to keep going. 

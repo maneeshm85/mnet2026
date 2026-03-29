@@ -1,7 +1,7 @@
 ---
 title:  Lessons Learnt in Setting Up a Static Site with Hugo in 2020
 date: 2020-08-20
-tags: ["Website","Publishing","Lessons","2020"]
+tags: ["website", "publishing", "lessons", "2020"]
 ---
 
 I wanted an alternative to Wordpress and hosting that was more value for money. Then five days ago I discovered the world of Static Site Generators. It went on to solve my problem. This is a document on how it did. 
