@@ -23,6 +23,8 @@ You can read more [about it here](https://bombaydaak.substack.com).
 
 1. Mansur - Vikramajit Ram
 2. Despite the State - M. Rajshekhar
+3. [Poor Charlie's Almanack - Charlie Munger](https://www.stripe.press/poor-charlies-almanack)
+4. How Brands Grow - Byron Sharp
  
 ##### Essays
 
