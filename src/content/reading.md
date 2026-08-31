@@ -25,6 +25,7 @@ You can read more [about it here](https://bombaydaak.substack.com).
 2. Despite the State - M. Rajshekhar
 3. [Poor Charlie's Almanack - Charlie Munger](https://www.stripe.press/poor-charlies-almanack)
 4. How Brands Grow - Byron Sharp
+5. Making History - K.J. Parker
  
 ##### Essays
 
