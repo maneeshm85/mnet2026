@@ -26,6 +26,7 @@ You can read more [about it here](https://bombaydaak.substack.com).
 3. [Poor Charlie's Almanack - Charlie Munger](https://www.stripe.press/poor-charlies-almanack)
 4. How Brands Grow - Byron Sharp
 5. Making History - K.J. Parker
+6. Mastery - George Leonard
  
 ##### Essays
 
